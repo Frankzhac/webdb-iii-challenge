@@ -1,9 +1,8 @@
-
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('users', tbl => {
+  return knex.schema.createTable('students', tbl => {
     tbl.increments();
 
-    tbl.text('name').notNullable();
+    tbl.string('name').notNullable();
 
     // foreign key
     tbl
@@ -17,5 +16,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('users');
+  return knex.schema.dropTableIfExists('students');
 };
