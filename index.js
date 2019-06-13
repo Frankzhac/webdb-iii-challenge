@@ -45,6 +45,20 @@ const errors = {
   '19': 'Another record with that value exists',
 };
 
+// get the students from using a cohort_id
+server.get('/api/cohorts/:id/students', async (req, res) => {
+  // get the cohorts from the database
+  try {
+    const student = await db('students')
+      .where({ id: req.params.id })
+      .first();
+    res.status(200).json(student);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+
 // create cohorts
 server.post('/api/cohorts', async (req, res) => {
   try {
